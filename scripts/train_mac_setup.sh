@@ -13,5 +13,5 @@ export PATH=/opt/conda/envs/solaris/bin:$PATH
 source activate solaris
 pip install git+git://github.com/toblerity/shapely.git
 cd solaris && pip install .
-cd .. && ./train.sh <PATH_TO_SAR_DATA>
+cd .. && ./train.sh <PATH_TO_SAR_DATA>  # Note, i have a custom train.sh and settings.sh file in this repo
 
