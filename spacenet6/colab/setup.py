@@ -32,7 +32,7 @@ def runcmds(ipython, lines):
 	cmds = [ cmd for cmd in lines.split("\n") if not cmd=="" ]
 	for cmd in cmds:
 		print( "Running command: \"%s\".  Please wait..." % cmd )
-		outp = ipython.getouput( cmd )
+		outp = ipython.getoutput( cmd )
 		print(outp)
 
 def prereqs():
