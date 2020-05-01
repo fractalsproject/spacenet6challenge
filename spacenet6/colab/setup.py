@@ -29,6 +29,15 @@ pip install gdal>=3.0.2 && echo "OK gdal"
 cp /content/spacenet6challenge/solaris_setup_adj.py /content/spacenet6challenge/solaris/setup.py && cd /content/spacenet6challenge/solaris && python setup.py install && echo "OK"
 '''
 
+def checksolaris(version=False):
+
+	# We assume if we can import solaris then all the dependencies 
+	# were already dealt with
+	try:
+		import solaris
+	except:
+		return False
+
 def checkjupyter(version=False):
 	print("Checking for jupyter/ipython environment...")
 	try:
@@ -60,7 +69,12 @@ def runcmds(ipython, lines):
 			print("Command Failed.")
 			return False
 
-def prereqs():
+def prereqs(force=False):
+
+	# check if we already ran this successfully
+	if not force and checksolaris():
+		print("It looks like prerequisites may have already been installed. Pass force=True to force it.")
+		return True	
 
 	# verify its jupyter
 	ipython = checkjupyter()
