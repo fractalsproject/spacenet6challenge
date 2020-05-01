@@ -1,6 +1,6 @@
-from IPython import get_ipython
 
-_cmds = '''
+# These are the prereq commands that get individual invoked in the ipython session and checked.
+_prereq_cmds = '''\
 pip install affine>=2.3.0 && echo "OK affine"
 pip install albumentations==0.4.3 && echo "OK albumentations"
 pip install fiona>=1.7.13 && echo "OK fiona"
@@ -26,15 +26,33 @@ sudo apt-get install -y build-essential libssl-dev libffi-dev libxml2-dev libxsl
 sudo apt-get install -y libgdal-dev && echo "OK"
 sudo gdal-config --version && echo "OK"
 pip install gdal>=3.0.2 && echo "OK gdal"
-cd /content/spacenet6challenge/solaris && python setup.py install && echo "OK"
+cp /content/spacenet6challenge/solaris_req_adj.txt /content/spacenet6challenge/solaris/requirements.txt && cd /content/spacenet6challenge/solaris && python setup.py install && echo "OK"
 '''
+
+def checkjupyter(version=False):
+	print("Checking for jupyter/ipython environment...")
+	try:
+		from IPython import get_ipython
+		ipython = get_ipython()
+		return ipython
+	except:
+		return False
+
+	print("Passed.")
+
+def checkcolab(version=False):
+	print("Checking for Colab environment...")
+	import os
+	if not os.path.exists("/content"):
+		return False
+	print("Passed.")
 
 def runcmds(ipython, lines):
 	cmds = [ cmd for cmd in lines.split("\n") if not cmd=="" ]
 	for cmd in cmds:
 		print( "Running command: \"%s\".  Please wait..." % cmd )
 		outputs = ipython.getoutput( cmd )
-		print(outputs)
+		#print(outputs)
 		if any( [ outp.startswith("OK") for outp in outputs ] ):
 			print("OK.")
 		else:
@@ -42,12 +60,14 @@ def runcmds(ipython, lines):
 			return False
 
 def prereqs():
-	# verify its a notebook ( and version )
-	ipython = get_ipython()
-	# TODO
 
-	# verify its colab ( and version )
-	# TODO
+	# verify its jupyter
+	ipython = checkjupyter()
+	if ipython == False: raise Exception("This is not a jupyter notebook.")
 
-	status = runcmds( ipython, _cmds )
-	if not status: raise Exception("Could not install prerequisite packages.")
+	# verify its colab 
+	if not checkcolab(): raise Exception("This is not a Colab notebook.")
+
+	# run prereq shell commands
+	status = runcmds( ipython, _prereq_cmds )
+	if not status: raise Exception("Could not install all prerequisite packages.")
