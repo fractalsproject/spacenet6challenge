@@ -42,13 +42,14 @@ def prereqs():
 
 	# do apt-get installs
 	outp= ipython.system("echo 'Running system command: \"%s\"'.  Please wait..." % _init_apt_get )
-	print(outp, type(outp))
+	#print(outp, type(outp))
 	outp = ipython.system( _init_apt_get )
-	print(outp, type(outp))
+	#print(outp, type(outp))
 
 	# do (external) pip installs
 	cmds = [ cmd for cmd in _pip_ext.split("\n") if not cmd=="" ]
 	print(cmds)
 	for cmd in cmds:
 		outp = ipython.system("echo 'Running pip command: \"%s\"'.  Please wait..." % cmd )
-		print(outp, type(outp))
+
+		outp = ipython.system( cmd )
