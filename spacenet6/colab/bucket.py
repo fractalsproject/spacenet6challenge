@@ -16,6 +16,7 @@ def checkcolab():
 	if not os.path.exists("/content"):
 		return False
 	else:
+		print("Passed.")
 		return True
 
 def runcmds(ipython, lines, errcheck=True, showoutput=False):
