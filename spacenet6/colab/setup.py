@@ -20,12 +20,12 @@ pip install torchvision>=0.5.0 && echo "ok torchvision"
 pip install tqdm>=4.40.0 && echo "ok tqdm"
 pip install urllib3>=1.25.7 && echo "ok urllib3"
 sudo apt-get install -y software-properties-common
-sudo add-apt-repository ppa:ubuntugis/ppa && apt-get update && apt-get update
-sudo apt-get install -y libspatialindex-dev python-rtree gdal-bin"
+sudo add-apt-repository -y ppa:ubuntugis/ppa && apt-get -y update 
+sudo apt-get install -y libspatialindex-dev python-rtree gdal-bin
 sudo apt-get install -y build-essential libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev
 sudo apt-get install -y libgdal-dev
-sudo gdal-config --version
-pip install gdal>=3.0.2 && echo "ok urllib3"
+sudo gdal-config --version 
+pip install gdal>=3.0.2 && echo "ok gdal"
 '''
 
 def runcmds(ipython, lines):
