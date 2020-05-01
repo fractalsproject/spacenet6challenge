@@ -31,12 +31,12 @@ def mount(bucket_name, force_new_mount=False):
 		auth.authenticate_user()
 		runcmds('echo "deb http://packages.cloud.google.com/apt gcsfuse-bionic main" > /etc/apt/sources.list.d/gcsfuse.list')
 		runcmds('curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - ' )
-	  	runcmds('apt -qq update')
-	  	runcmds('apt -qq install gcsfuse')
-	  	runcmds('mkdir mountOnColab')
-	  	runcmds("gcsfuse --implicit-dirs %s mountOnColab" % bucket_name )
-	  	print("Done. Getting folder contents...")
-	  	runcmds("ls -als /content/mountOnColab
+		runcmds('apt -qq update')
+		runcmds('apt -qq install gcsfuse')
+		runcmds('mkdir mountOnColab')
+		runcmds("gcsfuse --implicit-dirs %s mountOnColab" % bucket_name )
+		print("Done. Getting folder contents...")
+		runcmds("ls -als /content/mountOnColab")
 	else:
 		print("The locat folder mount exists.  Remounting remote system just in case...")
 		runcmds("fusermount -u mountOnColab")
@@ -44,6 +44,6 @@ def mount(bucket_name, force_new_mount=False):
 		runcmds("mkdir mountOnColab")
 		runcmds("gcsfuse --implicit-dirs %s mountOnColab" % bucket_name)
 		print("Done. Getting folder contents...")
-		runcmds("ls -als /content/mountOnColab
+		runcmds("ls -als /content/mountOnColab")
 
 	return True
