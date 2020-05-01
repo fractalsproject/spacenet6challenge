@@ -35,6 +35,7 @@ def checksolaris(version=False):
 	# were already dealt with
 	try:
 		import solaris
+		return True
 	except:
 		return False
 
@@ -88,4 +89,5 @@ def prereqs(force=False):
 	status = runcmds( ipython, _prereq_cmds )
 	if not status: raise Exception("Could not install all prerequisite packages.")
 
+	print("All prereqs hav been installed.")	
 	return True
