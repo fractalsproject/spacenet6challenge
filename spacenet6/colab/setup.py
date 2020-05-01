@@ -28,7 +28,7 @@ sudo gdal-config --version
 pip install gdal>=3.0.2 && echo "ok urllib3"
 '''
 
-def runcmds(lines):
+def runcmds(ipython, lines):
 	cmds = [ cmd for cmd in lines.split("\n") if not cmd=="" ]
 	for cmd in cmds:
 		print( "Running command: \"%s\".  Please wait..." % cmd )
@@ -43,4 +43,4 @@ def prereqs():
 	# verify its colab ( and version )
 	# TODO
 
-	status = runcmds( _cmds )
+	status = runcmds( ipython, _cmds )
