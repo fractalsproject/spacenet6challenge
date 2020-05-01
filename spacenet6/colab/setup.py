@@ -26,7 +26,7 @@ sudo apt-get install -y build-essential libssl-dev libffi-dev libxml2-dev libxsl
 sudo apt-get install -y libgdal-dev && echo "OK"
 sudo gdal-config --version && echo "OK"
 pip install gdal>=3.0.2 && echo "OK gdal"
-!cd /content/spacenet6challenge/solaris && python setup.py install && echo "OK"
+cd /content/spacenet6challenge/solaris && python setup.py install && echo "OK"
 '''
 
 def runcmds(ipython, lines):
