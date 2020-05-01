@@ -1,0 +1,4 @@
+[submodule "CosmiQ_SN6_Baseline"]
+	path = CosmiQ_SN6_Baseline
+	url = https://github.com/CosmiQ/CosmiQ_SN6_Baseline/
+	branch = master

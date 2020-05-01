@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # I started with a fresh miniconda installation using installer Miniconda3-py37_4.8.2-MacOSX-x86_64.sh.
+# ~/Downloads/Miniconda3-py37_4.8.2-MacOSX-x86_64.sh -b -p ~/opt/miniconda3_mtcnn
 
 # Then I basically used the Dockerfile as a script for what to do next.  You will need to fix up some paths here.
 
