@@ -29,11 +29,11 @@ pip install gdal>=3.0.2 && echo "ok urllib3"
 '''
 
 def runcmds(lines):
-        cmds = [ cmd for cmd in _pip_ext.split("\n") if not cmd=="" ]
-        print(cmds)
-        for cmd in cmds:
-                print( "Running command: \"%s\".  Please wait..." % cmd )
-                outp = ipython.getouput( cmd )
+	cmds = [ cmd for cmd in _pip_ext.split("\n") if not cmd=="" ]
+	print(cmds)
+	for cmd in cmds:
+		print( "Running command: \"%s\".  Please wait..." % cmd )
+		outp = ipython.getouput( cmd )
 		print(outp)
 
 def prereqs():
