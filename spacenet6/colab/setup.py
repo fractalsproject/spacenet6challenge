@@ -68,6 +68,7 @@ def runcmds(ipython, lines):
 		else:
 			print("Command Failed.")
 			return False
+	return True
 
 def prereqs(force=False):
 
@@ -86,3 +87,5 @@ def prereqs(force=False):
 	# run prereq shell commands
 	status = runcmds( ipython, _prereq_cmds )
 	if not status: raise Exception("Could not install all prerequisite packages.")
+
+	return True
