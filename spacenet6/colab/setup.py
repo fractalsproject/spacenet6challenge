@@ -5,6 +5,8 @@ _aptget = "sudo apt-get install libgdal-dev libspatialindex-dev python-rtree gda
 def prereqs():
 	ipython = get_ipython()
 	#dir(ipython)
-	outp = ipython.system("echo 'Running Command %s'" % _aptget )
-	print(outp)	
+	outp = ipython.system("echo 'Running Command "%s"'.  Please wait..." % _aptget )
+	print(outp, type(outp))
+	outp = ipython.system( _apt_get )
+	print(outp, type(outp))
 
