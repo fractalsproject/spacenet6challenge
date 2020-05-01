@@ -2,3 +2,7 @@
 	path = CosmiQ_SN6_Baseline
 	url = https://github.com/CosmiQ/CosmiQ_SN6_Baseline/
 	branch = master
+[submodule "solaris"]
+	path = solaris
+	url = https://github.com/cosmiq/solaris.git
+	branch = master
