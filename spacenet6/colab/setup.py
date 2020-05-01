@@ -34,18 +34,19 @@ def checkjupyter(version=False):
 	try:
 		from IPython import get_ipython
 		ipython = get_ipython()
+		print("Passed.")
 		return ipython
 	except:
 		return False
-
-	print("Passed.")
 
 def checkcolab(version=False):
 	print("Checking for Colab environment...")
 	import os
 	if not os.path.exists("/content"):
 		return False
-	print("Passed.")
+	else:
+		print("Passed.")
+		return True
 
 def runcmds(ipython, lines):
 	cmds = [ cmd for cmd in lines.split("\n") if not cmd=="" ]
