@@ -50,5 +50,5 @@ def prereqs():
 	cmds = [ cmd for cmd in _pip_ext.split("\n") if not cmd=="" ]
 	print(cmds)
 	for cmd in cmds:
-		outp = ipython.system(echo 'Running pip command: \"%s\"'.  Please wait..." % cmd )
+		outp = ipython.system("echo 'Running pip command: \"%s\"'.  Please wait..." % cmd )
 		print(outp, type(outp))
