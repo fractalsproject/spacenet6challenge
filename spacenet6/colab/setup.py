@@ -26,7 +26,7 @@ sudo apt-get install -y build-essential libssl-dev libffi-dev libxml2-dev libxsl
 sudo apt-get install -y libgdal-dev && echo "OK"
 sudo gdal-config --version && echo "OK"
 pip install gdal>=3.0.2 && echo "OK gdal"
-cp /content/spacenet6challenge/solaris_req_adj.txt /content/spacenet6challenge/solaris/requirements.txt && cd /content/spacenet6challenge/solaris && python setup.py install && echo "OK"
+cp /content/spacenet6challenge/solaris_setup_adj.py /content/spacenet6challenge/solaris/setup.py && cd /content/spacenet6challenge/solaris && python setup.py install && echo "OK"
 '''
 
 def checkjupyter(version=False):
