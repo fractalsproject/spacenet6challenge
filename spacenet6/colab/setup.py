@@ -47,7 +47,7 @@ def prereqs():
 	print(outp, type(outp))
 
 	# do (external) pip installs
-	cmds = [ cmd in for cmd in _pip_ext.split("\n") if not cmd=="" ]
+	cmds = [ cmd for cmd in _pip_ext.split("\n") if not cmd=="" ]
 	print(cmds)
 	for cmd in cmds
 		outp = ipython.system(echo 'Running pip command: \"%s\"'.  Please wait..." % cmd )
