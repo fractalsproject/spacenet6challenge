@@ -60,7 +60,7 @@ def mount(bucket_name, force_new_mount=False):
 		runcmds( ipython, 'mkdir mountOnColab')
 		runcmds( ipython, "gcsfuse --implicit-dirs %s mountOnColab" % bucket_name )
 		print("Done. Getting folder contents...")
-		runcmds( ipython, "ls -als /content/mountOnColab", showoutput=True)
+		runcmds( ipython, "ls -als /content/mountOnColab", errcheck=False, showoutput=True)
 	else:
 		print("The local folder mount exists.  Remounting remote system just in case...")
 		runcmds( ipython, "fusermount -u mountOnColab")
@@ -68,7 +68,7 @@ def mount(bucket_name, force_new_mount=False):
 		runcmds( ipython, "mkdir mountOnColab")
 		runcmds( ipython, "gcsfuse --implicit-dirs %s mountOnColab" % bucket_name)
 		print("Done. Getting folder contents...")
-		runcmds(ipython,  "ls -als /content/mountOnColab", showoutput=True)
+		runcmds(ipython,  "ls -als /content/mountOnColab", errcheck=False, showoutput=True)
 
 	print("Mount was successful.")
 	return True
