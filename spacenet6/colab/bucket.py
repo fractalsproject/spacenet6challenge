@@ -18,18 +18,26 @@ def checkcolab():
 	else:
 		return True
 
-def runcmds(ipython, lines):
+def runcmds(ipython, lines, errcheck=True, showoutput=False):
 	cmds = [ cmd for cmd in lines.split("\n") if not cmd=="" ]
 	for cmd in cmds:
+
 		print( "Running command: \"%s\".  Please wait..." % cmd )
-		outputs = ipython.getoutput( cmd + ' && echo "OK."' )
-		#print(outputs)
-		if any( [ outp.startswith("OK") for outp in outputs ] ):
-			print("OK.")
-		else:
+		outputs = ipython.getoutput( cmd + ' && echo "OK."' if errcheck else "" )
+		ok = any( [ outp.startswith("OK") for outp in outputs ] )
+
+		if errcheck and ok:
+			if showoutput: print( "".join(outputs) )
+			else: print("OK.")
+			return True
+		elif errcheck and not ok:
 			print("Command Failed.")
+			if showoutput: print( "".join(outputs) )
 			return False
-	return True
+		else: # not errcheck
+			if showoutput: print( "".join(outputs) )
+			return True	
+			
 
 def mount(bucket_name, force_new_mount=False):
 
@@ -52,14 +60,14 @@ def mount(bucket_name, force_new_mount=False):
 		runcmds( ipython, 'mkdir mountOnColab')
 		runcmds( ipython, "gcsfuse --implicit-dirs %s mountOnColab" % bucket_name )
 		print("Done. Getting folder contents...")
-		runcmds( ipython, "ls -als /content/mountOnColab")
+		runcmds( ipython, "ls -als /content/mountOnColab", showoutput=True)
 	else:
-		print("The locat folder mount exists.  Remounting remote system just in case...")
+		print("The local folder mount exists.  Remounting remote system just in case...")
 		runcmds( ipython, "fusermount -u mountOnColab")
 		runcmds( ipython, "rmdir mountOnColab")
 		runcmds( ipython, "mkdir mountOnColab")
 		runcmds( ipython, "gcsfuse --implicit-dirs %s mountOnColab" % bucket_name)
 		print("Done. Getting folder contents...")
-		runcmds(ipython,  "ls -als /content/mountOnColab")
+		runcmds(ipython,  "ls -als /content/mountOnColab", showoutput=True)
 
 	return True
