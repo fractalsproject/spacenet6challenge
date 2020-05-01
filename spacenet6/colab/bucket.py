@@ -27,15 +27,14 @@ def runcmds(ipython, lines, errcheck=True, showoutput=False):
 		ok = any( [ outp.startswith("OK") for outp in outputs ] )
 
 		if errcheck and ok:
-			if showoutput: print( "".join(outputs) )
+			if showoutput: print( "\n".join(outputs) )
 			else: print("OK.")
 			return True
 		elif errcheck and not ok:
-			print("Command Failed.")
-			if showoutput: print( "".join(outputs) )
-			return False
+			if showoutput: print( "\n".join(outputs) )
+			raise Exception("Command failed.")
 		else: # not errcheck
-			if showoutput: print( "".join(outputs) )
+			if showoutput: print( "\n".join(outputs) )
 			return True	
 			
 
@@ -70,4 +69,5 @@ def mount(bucket_name, force_new_mount=False):
 		print("Done. Getting folder contents...")
 		runcmds(ipython,  "ls -als /content/mountOnColab", showoutput=True)
 
+	print("Mount was successful.")
 	return True
