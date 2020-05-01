@@ -1,6 +1,6 @@
 
-# These are the prereq commands that get individual invoked in the ipython session and checked.
-_prereq_cmds = '''\
+# These are the baseline prereq commands that get individual invoked in the ipython session and checked.
+_baseline_prereq_cmds = '''\
 pip install affine>=2.3.0 
 pip install albumentations==0.4.3
 pip install fiona>=1.7.13 
@@ -71,11 +71,11 @@ def runcmds(ipython, lines):
 			return False
 	return True
 
-def prereqs(force=False):
+def baseline_prereqs(force=False):
 
 	# check if we already ran this successfully
 	if not force and checksolaris():
-		print("It looks like prerequisites may have already been installed. Pass force=True to force it.")
+		print("It looks like baseline prerequisites may have already been installed. Pass force=True to force it.")
 		return True	
 
 	# verify its jupyter
@@ -85,9 +85,22 @@ def prereqs(force=False):
 	# verify its colab 
 	if not checkcolab(): raise Exception("This is not a Colab notebook.")
 
-	# run prereq shell commands
-	status = runcmds( ipython, _prereq_cmds )
-	if not status: raise Exception("Could not install all prerequisite packages.")
+	# run baseline prereq shell commands
+	status = runcmds( ipython, _baseline_prereq_cmds )
+	if not status: raise Exception("Could not install all baseline prerequisite packages.")
 
-	print("All prereqs hav been installed.")	
+	# make sure we can find the cosmi python libraries
+	import sys
+	sys.path.append("/content/spacenet6challenge/solaris")
+	sys.path.append("/content/spacenet6challenge/CosmiQ_SN6_Baseline")
+
+	# do a final check
+	try:
+		import solaris
+		import baseline
+	except:
+		raise Exception("Final check of baseline prequisites failed.")
+
+	# success
+	print("All baseline prereqs have been installed.")	
 	return True
