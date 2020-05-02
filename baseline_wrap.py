@@ -77,6 +77,7 @@ def parse_args(argv):
 	parser.add_argument('--earlycutoff',\
                         help='Limit tiles used, for debugging purposes')
 	args = parser.parse_args(argv[1:])
+	return args
 
 def invoke(args):
 	if args.pretrain:
