@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 echo
 echo "Checking this is Colaboratory..."
 if [ ! -d /content ]; then
@@ -10,11 +12,13 @@ echo "OK."
 echo
 
 # Check to see if prereq has already run sucessfully
+unset -e
 python -c "import solaris" > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 	echo 'Colab prereq has already run successfully.'
 	exit 0
 fi
+set -e
 
 # Install some linux packages
 echo "Updating several linux packages..."
