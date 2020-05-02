@@ -12,7 +12,7 @@ echo "OK."
 echo
 
 # Check to see if prereq has already run sucessfully
-unset -e
+set +e
 python -c "import solaris" > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 	echo 'Colab prereq has already run successfully.'
@@ -33,7 +33,9 @@ echo
 
 # Check conda
 echo "Checking conda..."
+set +e
 gotconda=`which conda`
+set -e
 if [ -z $gotconda ]; then
 	echo "Did not find conda.  Downloading and installing miniconda..."
 	wget -c https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh
