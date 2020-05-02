@@ -29,7 +29,7 @@ pip install gdal>=3.0.2
 cp /content/spacenet6challenge/solaris_setup_adj.py /content/spacenet6challenge/solaris/setup.py && cd /content/spacenet6challenge/solaris && pip install .
 '''
 
-_install_solaris_cmds = ```\
+_install_solaris_cmds = '''\
 cd /content/spacenet6challenge/solaris && pip install .
 '''
 
