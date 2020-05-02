@@ -101,7 +101,7 @@ def baseline_prereqs(force=False):
 	if not status: raise Exception("Could not install all baseline prerequisite packages.")
 	
 	# run solaris package
-	status = runcmds( ipython, _install_solaris_cmds, errcheck=False)
+	status = runcmds( ipython, _install_solaris_cmds, errcheck=False, showoutput=True)
 	if not status: raise Exception("Could not install all baseline prerequisite packages.")
 
 	# make sure we can find the cosmi python libraries for baseline
