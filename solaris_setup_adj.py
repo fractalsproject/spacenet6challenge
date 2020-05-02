@@ -84,7 +84,6 @@ else:
 ###########################
 # This doesn't work in colab
 #                 'shapely>=1.7.1dev',
-                 'shapely',
 ###########################
                  'torchvision>=0.5.0',
                  'tqdm>=4.40.0',

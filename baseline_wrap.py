@@ -1,4 +1,5 @@
 import argparse
+import os
 from baseline import pretrain, train, pretest, test, evaluation
 
 def parse_args(argv):
@@ -79,36 +80,36 @@ def parse_args(argv):
 	args = parser.parse_args(argv)
 	return args
 
-def fixup(localdir, args):
+def fixup(localdir, targetdir, args):
 	if not os.path.exists(localdir):
 		os.makedirs( localdir, exist_ok = True )
 	argdct = vars(args)
 	for key in argdct.keys():
 		val = argdct[key]
-		print("For %s, checking if %s is a path..." % (key,argdct[key] ))
-		if os.path.exists(val):
-			print("Found file %s", val)
+		print("For arg '%s', checking if '%s' is a path..." % (key,argdct[key] ))
+		if type(val)==type("") and os.path.isfile(val):
+			print("Found file %s" % val)
 			f = open(val)
 			txt = f.read()
 			f.close()
 			if txt.find("./root")>=0:
 				fname = os.path.join( localdir, os.path.basename( val ) )
 				print("Copying file to %s and fixing paths", fname)
-				newtxt = txt.replace("./root",localdir)
+				newtxt = txt.replace("./root",targetdir)
 				f = open( fname, 'w')
-				f.write(newtxt)
+				f.write(newtxt) 
 				f.flush()
 				f.close()
-				args[key] = fname
+				args.__setattr__(key,fname)
 	print("Fixup done:")
 	print(vars(args))
 
 
-def invoke(localdir, args):
+def invoke(localdir, targetdir, args):
 	if args.pretrain:
         	pretrain(args)
 	if args.train:
-		fixup(localdir, args)	
+		fixup(localdir, targetdir, args)	
 		train(args)
 	if args.pretest:
 		pretest(args)
