@@ -94,7 +94,7 @@ def fixup(localdir, targetdir, args):
 			f.close()
 			if txt.find("./root")>=0:
 				fname = os.path.join( localdir, os.path.basename( val ) )
-				print("Copying file to %s and fixing paths", fname)
+				print("Copying file to %s and fixing paths" % fname)
 				newtxt = txt.replace("./root",targetdir)
 				f = open( fname, 'w')
 				f.write(newtxt) 
