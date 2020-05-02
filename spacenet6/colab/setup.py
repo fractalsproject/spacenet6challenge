@@ -45,13 +45,13 @@ def runcmds(ipython, lines, errcheck=True, showoutput=False):
 		if errcheck and ok:
 			if showoutput: print( "\n".join(outputs) )
 			else: print("OK.")
-			return True
 		elif errcheck and not ok:
 			if showoutput: print( "\n".join(outputs) )
 			raise Exception("Command failed.")
 		else: # not errcheck
 			if showoutput: print( "\n".join(outputs) )
-			return True
+
+	return True
 
 def checksolaris(version=False):
 
