@@ -60,11 +60,25 @@ echo
 #	rm -r /content/spacenet6challenge 
 #fi
 #git clone --recursive https://github.com/fractalsproject/spacenet6challenge
+
+# Cleanup any previous env
+if [ -d /usr/local/envs/solaris ]; then
+	echo 'Cleaning up previous conda env...'
+	conda env remove -f solaris
+	echo 'OK.'
+	echo
+fi
+
+echo "Installing solaris environment and package..."
 cp spacenet6challenge/solaris_setup_adj.py spacenet6challenge/solaris/setup.py
 cd spacenet6challenge/solaris && conda env create -f environment.yml
 export PATH=/opt/conda/envs/solaris/bin:$PATH
 source activate solaris
 pip install git+git://github.com/toblerity/shapely.git
 cd spacenet6challenge/solaris && pip install .
-echo "Done."
+echo "OK."
 echo
+
+echo "Colab prereq finished."
+echo
+exit 0
