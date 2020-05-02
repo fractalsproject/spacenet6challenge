@@ -40,15 +40,16 @@ ls -als
 cd spacenet6challenge
 which conda
 echo $PATH
-conda env update -f configs/environment.yml
+#conda env update -f configs/environment.yml
+pip install -f configs/requirements.txt
 cd solaris
 which pip
 pip install git+git://github.com/toblerity/shapely.git
 echo "$PATH"
 pip install .
 which conda
-conda install -y jupyter
-conda install -y jupyterlab
+pip install jupyter
+pip install jupyterlab
 
 python -c "from solaris import utils"
 
