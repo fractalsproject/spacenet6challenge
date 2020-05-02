@@ -50,6 +50,8 @@ def runcmds(ipython, lines, errcheck=True, showoutput=False):
 			raise Exception("Command failed.")
 		else: # not errcheck
 			if showoutput: print( "\n".join(outputs) )
+		
+		continue
 
 	return True
 
