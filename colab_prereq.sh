@@ -9,9 +9,9 @@ echo "OK."
 echo
 
 # Check to see if prereq has already run sucessfully
-python -c "import solaris"
+python -c "import solaris" > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-	echo 'Colab prereq has already run successfully."
+	echo 'Colab prereq has already run successfully.'
 	exit 0
 fi
 
