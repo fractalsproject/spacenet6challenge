@@ -39,13 +39,16 @@ git clone --recursive "https://github.com/fractalsproject/spacenet6challenge.git
 ls -als
 cd spacenet6challenge
 which conda
-echo $HOME
+echo $PATH
 conda env update -f configs/environment.yml
 cd solaris
 which pip
 pip install git+git://github.com/toblerity/shapely.git
 echo "$PATH"
 pip install .
+which conda
+conda install -y jupyter
+conda install -y jupyterlab
 
 python -c "from solaris import utils"
 
