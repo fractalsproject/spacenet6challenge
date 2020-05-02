@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -x
 set -e
 
 echo
@@ -58,7 +59,7 @@ echo
 #	echo 'Cleaning up previous project clone...'
 #	rm -r /content/spacenet6challenge 
 #fi
-git clone --recursive https://github.com/fractalsproject/spacenet6challenge
+#git clone --recursive https://github.com/fractalsproject/spacenet6challenge
 cp spacenet6challenge/solaris_setup_adj.py spacenet6challenge/solaris/setup.py
 cd spacenet6challenge/solaris && conda env create -f environment.yml
 export PATH=/opt/conda/envs/solaris/bin:$PATH
