@@ -29,6 +29,29 @@ pip install gdal>=3.0.2
 cp /content/spacenet6challenge/solaris_setup_adj.py /content/spacenet6challenge/solaris/setup.py && cd /content/spacenet6challenge/solaris && pip install .
 '''
 
+_install_solaris_cmds = ```\
+cd /content/spacenet6challenge/solaris && pip install .
+'''
+
+def runcmds(ipython, lines, errcheck=True, showoutput=False):
+	cmds = [ cmd for cmd in lines.split("\n") if not cmd=="" ]
+	for cmd in cmds:
+
+		print( "Running command: \"%s\".  Please wait..." % cmd )
+		outputs = ipython.getoutput( cmd + ' && echo "OK."' if errcheck else "" )
+		ok = any( [ outp.startswith("OK") for outp in outputs ] )
+                
+		if errcheck and ok:
+			if showoutput: print( "\n".join(outputs) )
+			else: print("OK.")
+			return True
+		elif errcheck and not ok:
+			if showoutput: print( "\n".join(outputs) )
+			raise Exception("Command failed.")
+		else: # not errcheck
+			if showoutput: print( "\n".join(outputs) )
+			return True
+
 def checksolaris(version=False):
 
 	# We assume if we can import solaris then all the dependencies 
@@ -88,10 +111,13 @@ def baseline_prereqs(force=False):
 	# run baseline prereq shell commands
 	status = runcmds( ipython, _baseline_prereq_cmds )
 	if not status: raise Exception("Could not install all baseline prerequisite packages.")
+	
+	# run solaris package
+	status = runcmds( ipython, _install_solaris_cmds, errcheck=False)
+	if not status: raise Exception("Could not install all baseline prerequisite packages.")
 
-	# make sure we can find the cosmi python libraries
+	# make sure we can find the cosmi python libraries for baseline
 	import sys
-	sys.path.append("/content/spacenet6challenge/solaris")
 	sys.path.append("/content/spacenet6challenge/CosmiQ_SN6_Baseline")
 
 	# do a final check
