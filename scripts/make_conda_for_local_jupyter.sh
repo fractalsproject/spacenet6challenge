@@ -37,10 +37,12 @@ cd $tmp_dir
 pwd
 git clone --recursive "https://github.com/fractalsproject/spacenet6challenge.git"
 ls -als
-#git clone https://github.com/cosmiq/solaris.git
-cd spacenet6challenge/solaris
-pwd
-conda env update --name base -f environment.yml
+cd spacenet6challenge
+conda env update -f configs/environment.yml
+cd solaris
 pip install git+git://github.com/toblerity/shapely.git
-pip install .
+echo "$PATH"
+pip install a
+
+python -c "from solaris import utils"
 
