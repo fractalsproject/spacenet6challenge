@@ -26,7 +26,7 @@ pip install torchvision>=0.5.0
 pip install tqdm>=4.40.0 
 pip install urllib3>=1.25.7
 pip install gdal>=3.0.2 
-cp /content/spacenet6challenge/solaris_setup_adj.py /content/spacenet6challenge/solaris/setup.py && cd /content/spacenet6challenge/solaris && python setup.py install
+cp /content/spacenet6challenge/solaris_setup_adj.py /content/spacenet6challenge/solaris/setup.py && cd /content/spacenet6challenge/solaris && pip install .
 '''
 
 def checksolaris(version=False):
