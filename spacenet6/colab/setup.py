@@ -35,7 +35,7 @@ cd /content/spacenet6challenge/solaris && pip install .
 
 def runcmds(ipython, lines, errcheck=True, showoutput=False):
 	cmds = [ cmd for cmd in lines.split("\n") if not cmd=="" ]
-	print("CMDS",cmds)
+	print("CMDS",cmds, errcheck)
 	for cmd in cmds:
 
 		print( "Running command: \"%s\".  Please wait..." % cmd )
