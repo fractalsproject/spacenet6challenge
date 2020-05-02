@@ -70,12 +70,12 @@ if [ -d /usr/local/envs/solaris ]; then
 fi
 
 echo "Installing solaris environment and package..."
-cp spacenet6challenge/solaris_setup_adj.py spacenet6challenge/solaris/setup.py
-cd spacenet6challenge/solaris && conda env create -f environment.yml
+cp /content/spacenet6challenge/solaris_setup_adj.py /content/spacenet6challenge/solaris/setup.py
+cd /content/spacenet6challenge/solaris && conda env create -f environment.yml
 export PATH=/opt/conda/envs/solaris/bin:$PATH
 source activate solaris
 pip install git+git://github.com/toblerity/shapely.git
-cd spacenet6challenge/solaris && pip install .
+cd /content/spacenet6challenge/solaris && pip install .
 echo "OK."
 echo
 
