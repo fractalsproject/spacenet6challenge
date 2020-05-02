@@ -81,19 +81,6 @@ def checkcolab(version=False):
 		print("Passed.")
 		return True
 
-def runcmds(ipython, lines):
-	cmds = [ cmd for cmd in lines.split("\n") if not cmd=="" ]
-	for cmd in cmds:
-		print( "Running command: \"%s\".  Please wait..." % cmd )
-		outputs = ipython.getoutput( cmd + ' && echo "OK."' )
-		#print(outputs)
-		if any( [ outp.startswith("OK") for outp in outputs ] ):
-			print("OK.")
-		else:
-			print("Command Failed.")
-			return False
-	return True
-
 def baseline_prereqs(force=False):
 
 	# check if we already ran this successfully
