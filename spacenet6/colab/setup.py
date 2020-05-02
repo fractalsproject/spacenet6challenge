@@ -1,6 +1,12 @@
 
 # These are the baseline prereq commands that get individual invoked in the ipython session and checked.
 _baseline_prereq_cmds = '''\
+sudo apt-get install -y software-properties-common 
+sudo add-apt-repository -y ppa:ubuntugis/ppa && apt-get -y update
+sudo apt-get install -y libspatialindex-dev python-rtree gdal-bin
+sudo apt-get install -y build-essential libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev
+sudo apt-get install -y libgdal-dev 
+sudo gdal-config --version 
 pip install affine>=2.3.0 
 pip install albumentations==0.4.3
 pip install fiona>=1.7.13 
@@ -19,12 +25,6 @@ pip install scipy>=1.3.2
 pip install torchvision>=0.5.0
 pip install tqdm>=4.40.0 
 pip install urllib3>=1.25.7
-sudo apt-get install -y software-properties-common 
-sudo add-apt-repository -y ppa:ubuntugis/ppa && apt-get -y update
-sudo apt-get install -y libspatialindex-dev python-rtree gdal-bin
-sudo apt-get install -y build-essential libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev
-sudo apt-get install -y libgdal-dev 
-sudo gdal-config --version 
 pip install gdal>=3.0.2 
 cp /content/spacenet6challenge/solaris_setup_adj.py /content/spacenet6challenge/solaris/setup.py && cd /content/spacenet6challenge/solaris && python setup.py install
 '''
