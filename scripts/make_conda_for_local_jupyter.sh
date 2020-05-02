@@ -42,7 +42,7 @@ conda env update -f configs/environment.yml
 cd solaris
 pip install git+git://github.com/toblerity/shapely.git
 echo "$PATH"
-pip install a
+pip install .
 
 python -c "from solaris import utils"
 
