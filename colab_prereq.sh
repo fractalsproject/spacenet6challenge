@@ -71,11 +71,17 @@ echo
 
 echo "Installing solaris environment and package..."
 cp /content/spacenet6challenge/solaris_setup_adj.py /content/spacenet6challenge/solaris/setup.py
+
 #cd /content/spacenet6challenge/solaris && conda env create -f environment.yml
 #export PATH=/opt/conda/envs/solaris/bin:$PATH
 #source activate solaris
+
+cd /content/spacenet6challenge && conda env update -f solaris_environment_adj.yml
+export PATH=/opt/conda/bin
+
 #pip install git+git://github.com/toblerity/shapely.git
 pip install git+https://github.com/Toblerity/shapely.git@master#egg=shapely-1.7.1dev
+
 cd /content/spacenet6challenge/solaris && pip install .
 echo "OK."
 echo
