@@ -64,7 +64,7 @@ echo
 # Cleanup any previous env
 if [ -d /usr/local/envs/solaris ]; then
 	echo 'Cleaning up previous conda env...'
-	conda env remove -f solaris
+	conda env remove --name solaris
 	echo 'OK.'
 	echo
 fi
