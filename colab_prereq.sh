@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 echo "Checking this is Colaboratory..."
 if [ ! -d /content ]; then
 	echo "Error: This is not a Colaboratory environment."
