@@ -30,5 +30,5 @@ dependencies:
   - tensorflow-gpu=1.13.1
   - cuda100
   - pip
-  - pip:
-    - git+https://github.com/Toblerity/shapely.git@master#egg=shapely-1.7.1dev # temporary, dev required for numpy array support
+#GW  - pip: # This fails via 'conda env update -f"
+#GW    - git+https://github.com/Toblerity/shapely.git@master#egg=shapely-1.7.1dev # temporary, dev required for numpy array support
