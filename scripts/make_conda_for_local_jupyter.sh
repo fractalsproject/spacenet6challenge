@@ -41,7 +41,8 @@ cd spacenet6challenge
 which conda
 echo $PATH
 #conda env update -f configs/environment.yml
-pip install "$tmp_dir/configs/requirements.txt"
+ls "$tmp_dir/spacenet6challenge"
+pip install "$tmp_dir/spacenet6challenge/configs/requirements.txt"
 cd solaris
 which pip
 pip install git+git://github.com/toblerity/shapely.git
