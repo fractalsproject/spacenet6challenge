@@ -41,6 +41,7 @@ cd spacenet6challenge
 which conda
 echo $PATH
 conda env update -f "$tmp_dir/spacenet6challenge/configs/environment.yml"
+source "~/opt/$INSTNAME/etc/profile.d/conda.sh
 conda activate base
 ls "$tmp_dir/spacenet6challenge"
 #pip install -r "$tmp_dir/spacenet6challenge/configs/requirements.txt"
