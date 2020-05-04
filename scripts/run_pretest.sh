@@ -1,6 +1,8 @@
 #!/bin/bash
 
-if [ ! -d "$HOME/opt/miniconda_for_spacenet6_local_jupyter" ]; then
+INSTNAME="miniconda_for_spacenet6_local_jupyter"
+
+if [ ! -d "$HOME/opt/$INSTNAME" ]; then
 	echo "This system is not configured with the right conda environment"
 	exit 1
 fi
