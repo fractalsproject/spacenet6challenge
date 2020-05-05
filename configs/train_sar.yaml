@@ -24,8 +24,8 @@ data_specs:
   val_holdout_frac:
   data_workers:
 
-training_data_csv: '/content/mountOnColab/pretrain/train.csv'
-validation_data_csv: '/content/mountOnColab/pretrain/valid.csv'
+training_data_csv: 'TRAINCSV'
+validation_data_csv: 'VALIDCSV'
 
 training_augmentation:
   augmentations:
@@ -88,8 +88,8 @@ training:
   checkpoint_frequency: 10
   callbacks:
     model_checkpoint:
-      filepath: '/content/mountOnColab/train_sessions/DATEDIR/weights/best.model'
+      filepath: 'DATEDIR/weights/best.model'
       monitor: val_loss
-  model_dest_path: '/content/mountOnColab/train_sessions/DATEDIR/weights/last.model'
+  model_dest_path: 'DATEDIR/weights/last.model'
   verbose: true
 
