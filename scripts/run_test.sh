@@ -37,5 +37,5 @@ mkdir -p "$outputpath"
 
 source scripts/test_settings.sh
 
-CosmiQ_SN6_Baseline/baseline.py --pretest $testdataargs $settings
+CosmiQ_SN6_Baseline/baseline.py --test $testdataargs $settings
 
