@@ -58,6 +58,16 @@ validation_augmentation:
       max_pixel_value: 255.0
       p: 1.0
   p: 1.0
+inference_augmentation:
+  augmentations:
+    Normalize:
+      mean:
+        - 0.5
+      std:
+        - 0.125
+      max_pixel_value: 255.0
+      p: 1.0
+  p: 1.0
 training:
   epochs: 50
   steps_per_epoch:
