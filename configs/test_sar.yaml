@@ -1,7 +1,7 @@
 
 model_name: unet11
 
-model_path: '$MODELPATH'
+model_path: 
 train: false
 infer: true
 
