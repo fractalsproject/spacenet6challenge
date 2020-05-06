@@ -1,0 +1,98 @@
+
+model_name: unet11
+
+model_path:
+train: false
+infer: true
+
+pretrained:
+nn_framework:  torch
+batch_size: 8
+
+data_specs:
+  width: 512
+  height: 512
+  dtype:
+  image_type: 32bit
+  rescale: false
+  rescale_minima: auto
+  rescale_maxima: auto
+  channels: 4
+  label_type: mask
+  is_categorical: false
+  mask_channels: 1
+  val_holdout_frac:
+  data_workers:
+
+inference_data_csv: '$TESTCSV'
+
+training_augmentation:
+  augmentations:
+    HorizontalFlip:
+      p: 0.5
+    RandomCrop:
+      height: 512
+      width: 512
+      p: 1.0
+    Normalize:
+      mean:
+        - 0.5
+      std:
+        - 0.125
+      max_pixel_value: 255.0
+      p: 1.0
+  p: 1.0
+  shuffle: true
+validation_augmentation:
+  augmentations:
+    CenterCrop:
+      height: 512
+      width: 512
+      p: 1.0
+    Normalize:
+      mean:
+        - 0.5
+      std:
+        - 0.125
+      max_pixel_value: 255.0
+      p: 1.0
+  p: 1.0
+inference_augmentation:
+  augmentations:
+    Normalize:
+      mean:
+        - 0.5
+      std:
+        - 0.125
+      max_pixel_value: 255.0
+      p: 1.0
+  p: 1.0
+training:
+  epochs: 50
+  steps_per_epoch:
+  optimizer: AdamW
+  lr: 1e-4
+  opt_args:
+  loss:
+    dice:
+        logits: true
+    focal:
+        logits: true
+  loss_weights:
+    dice: 1.0
+    focal: 10.0
+  metrics:
+    training:
+    validation:
+  checkpoint_frequency: 10
+  callbacks:
+    model_checkpoint:
+      filepath: '$MODELDIR/best.model'
+      monitor: val_loss
+  model_dest_path: '$MODELDIR/last.model'
+  verbose: true
+
+inference:
+  window_step_size_x: 512
+  window_step_size_y: 512
+  output_dir: '$INFEROUT'
