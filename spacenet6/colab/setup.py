@@ -26,6 +26,7 @@ pip install torchvision>=0.5.0
 pip install tqdm>=4.40.0 
 pip install urllib3>=1.25.7
 pip install gdal>=3.0.2 
+pip install tensorflow-gpu=1.13.1
 '''
 
 _install_solaris_cmds = '''\
