@@ -6,7 +6,7 @@ train: true
 infer: false
 
 pretrained:
-nn_framework:  tensorflow
+nn_framework:  keras
 batch_size: 8
 
 data_specs:
