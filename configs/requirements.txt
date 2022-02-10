@@ -21,4 +21,4 @@ git+git://github.com/toblerity/shapely.git@master#egg=shapely-1.7.1dev
 torchvision>=0.5.0
 tqdm>=4.40.0
 urllib3>=1.25.7
-tensorflow==1.13.1
+tensorflow==2.5.3
